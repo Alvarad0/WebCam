@@ -7,6 +7,13 @@
     <title>Document</title>
     
 <link rel="stylesheet" href="http://jcrop-cdn.tapmodo.com/v2.0.0-RC1/css/Jcrop.css" type="text/css">
+<style>
+    #preview{
+        width:150px;
+        height:150px;
+        overflow:hidden;
+    }
+</style>
 </head>
 <body>
     <div>
@@ -17,6 +24,13 @@
     <hr>
     <label for="">Imagen a recortar</label>
     <img src="" id="photo" alt="photo">
+    <canvas id="preview"></canvas>
+    <br><br>
+    <hr>
+    <label for="">Imagen Recortada</label>
+    <p id="base64" style="display:none;"></p>
+    <img src="" id="b" alt="">
+    <button id="guardar">Guardar</button>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="http://jcrop-cdn.tapmodo.com/v2.0.0-RC1/js/Jcrop.js"></script>
     <script src="main.js"></script>

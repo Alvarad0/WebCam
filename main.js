@@ -5,6 +5,7 @@
         canvas       = document.querySelector('#canvas'),
         photo        = document.querySelector('#photo'),
         startbutton  = document.querySelector('#startbutton'),
+        guardar  = document.querySelector('#guardar'),
         width = 320,
         height = 0;
   
@@ -60,9 +61,33 @@
     $('#photo').Jcrop({
       setSelect: [ 50,50,400,150 ],
       aspectRatio: 1,
-      bgColor: 'red'
+      bgColor: 'rgba(73,155,234,0.75)',
+      onChange : updatePreview,
+      onSelect : updatePreview,
     });
-  
+
+    function updatePreview(c) {
+      if(parseInt(c.w) > 0) {
+          var canvas = document.getElementById("preview");
+          canvas.setAttribute("width", "100");
+          canvas.setAttribute("height", "100");
+          // Muestra preview de Imagen
+          var imageObj = $("#photo")[0];
+          var canvas = $("#preview")[0];
+          var context = canvas.getContext("2d");
+          context.drawImage(imageObj, c.x, c.y, c.w, c.h, 0, 0, canvas.width, canvas.height);
+          var d = canvas.toDataURL('image/png');
+          $("#base64").text(d);
+      }
+    }
+
+    guardar.addEventListener('click', function(ev){
+      document.getElementById("b").src = $("#base64").text();  
+    ev.preventDefault();
+  }, false);
+
+    
+
   })();
 
   
